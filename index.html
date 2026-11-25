@@ -48,3 +48,28 @@
     <img src="img/3.jpg">
     <p>ВЕКАМИ СЧИТАЛОСЬ ЧТО ЛИШЬ ИСТИННОЕ ПОНИМАНИЕ ЭТО СИЛА А НЕ ТОЛЬКО ОБОБЩЕННОЕ ЗНАНИЕ, НО ВЕЛИКОЕ ПРИТВОРСТВО, ЛАРПИНГ ЭТО СИЛЬНАЯ АУРА В СЕТИ. Я ЭТО ВЫЯВИЛ В ХОДЕ ИЗУЧЕНИЕ ИЛИ СОУ КАЛЛЕД ЛАРПИНГА ЛАНДОВСКОЙ НУМОГРАММЫ. LARP РАСКЛАДЫВАЕТСЯ В ЧИСЛО 83 И ПОПАДАЕТ В ЗОНУ 2 И ЗАПУСКАЕТ ПОТОК ЭНЕРГИИ К ЗОНЕ 5 ЧЕРЕЗ ДЕМОНА 7::2. 8+3=11 СЛЕДРВАТЕОЬНО 1+1=2 ПРИЗЕМЛЯЕТСЯ ВО ВТОРУЮ ЗОНУ. ИЩЕМ ПАРУ ДЛЯ ВТОРОГО. 9-2=7 МУТАЦИЯ 7-2=5 УСТРЕМЛЕЯЕТСЯ К ПЯТОЙ ЗОНЕ УДЕРЖИТЕНЛЬ ВЛАСТИ ЮПИТЕР..</p>
   </div>
+<div id="pages" style="text-align: center; margin-top: 20px;"></div>
+
+  <script>
+    const perPage = 5; // Сколько постов показывать на одной странице
+    const posts = Array.from(document.querySelectorAll('.post'));
+    const pagesBox = document.getElementById('pages');
+
+    function showPage(page) {
+      posts.forEach((post, index) => {
+        post.style.display = (index >= (page - 1) * perPage && index < page * perPage) ? 'block' : 'none';
+      });
+      pagesBox.innerHTML = '';
+      const totalPages = Math.ceil(posts.length / perPage);
+      if (totalPages > 1) {
+        for (let i = 1; i <= totalPages; i++) {
+          const btn = document.createElement('button');
+          btn.innerText = i;
+          btn.style.cssText = `margin: 0 5px; padding: 8px 14px; font-weight: bold; cursor: pointer; border: 2px solid cyan; background: ${i === page ? 'yellow' : '#222'}; color: ${i === page ? 'red' : 'white'};`;
+          btn.onclick = () => { showPage(i); window.scrollTo(0, 0); };
+          pagesBox.appendChild(btn);
+        }
+      }
+    }
+    showPage(1);
+  </script>
