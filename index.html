@@ -24,6 +24,29 @@
 <div class="box">
   <h1>⚡ ПОРНОЗАВОДСК-САННИКОВА-ИНФО 2007 ⚡</h1>
   <div class="banner">🚨 ВЫ 8 000 000 000-Й ПОСЕТИТЕЛЬ! СРОЧНЫЕ НОВОСТИ БЕЗ СМС! 🚨</div>
+  <div id="rates" style="background: #000; border: 2px solid yellow; color: lime; font-family: monospace; padding: 8px; margin-bottom: 15px; text-align: center; font-size: 14px;">
+    📈 ПОДКЛЮЧЕНИЕ К БИРЖЕ...
+  </div>
+  <script>
+    async function updateRates() {
+      try {
+        const res = await fetch('https://coinbase.com');
+        const json = await res.json();
+        const usdtRub = parseFloat(json.data.rates.RUB).toFixed(2);
+        const zigInUsdt = (13.56 + (Math.random() - 0.5) * 0.04).toFixed(2);
+        const arrow = Math.random() > 0.5 ? '▲' : '▼';
+        document.getElementById('rates').innerHTML = 
+          `💵 <b>1 USDT</b> — ${usdtRub} ₽ | 💰 <b>1 ZiG (Зимбабве)</b> — ${zigInUsdt} USDT ${arrow}`;
+      } catch (e) {
+        const fakeRub = (96.4 + (Math.random() - 0.5) * 0.3).toFixed(2);
+        const fakeZig = (13.56 + (Math.random() - 0.5) * 0.04).toFixed(2);
+        document.getElementById('rates').innerHTML = 
+          `💵 <b>1 USDT</b> — ${fakeRub} ₽ | 💰 <b>1 ZiG (Зимбабве)</b> — ${fakeZig} USDT ▲`;
+      }
+    }
+    updateRates();
+    setInterval(updateRates, 5000);
+  </script>
 
   <!-- ТАМ НОВЫЕ ПОСТЫ -->
 
@@ -72,29 +95,6 @@
       }
     }
     showPage(1);
-  </script>
-<div id="rates" style="background: #000; border: 2px solid yellow; color: lime; font-family: monospace; padding: 8px; margin-bottom: 15px; text-align: center; font-size: 14px;">
-    📈 ПОДКЛЮЧЕНИЕ К БИРЖЕ...
-  </div>
-  <script>
-    async function updateRates() {
-      try {
-        const res = await fetch('https://coinbase.com');
-        const json = await res.json();
-        const usdtRub = parseFloat(json.data.rates.RUB).toFixed(2);
-        const zigInUsdt = (13.56 + (Math.random() - 0.5) * 0.04).toFixed(2);
-        const arrow = Math.random() > 0.5 ? '▲' : '▼';
-        document.getElementById('rates').innerHTML = 
-          `💵 <b>1 USDT</b> — ${usdtRub} ₽ | 💰 <b>1 ZiG (Зимбабве)</b> — ${zigInUsdt} USDT ${arrow}`;
-      } catch (e) {
-        const fakeRub = (96.4 + (Math.random() - 0.5) * 0.3).toFixed(2);
-        const fakeZig = (13.56 + (Math.random() - 0.5) * 0.04).toFixed(2);
-        document.getElementById('rates').innerHTML = 
-          `💵 <b>1 USDT</b> — ${fakeRub} ₽ | 💰 <b>1 ZiG (Зимбабве)</b> — ${fakeZig} USDT ▲`;
-      }
-    }
-    updateRates();
-    setInterval(updateRates, 5000);
   </script>
   <div class="post">
     <h2>СВОДКИ С СВО 25.11.2026</h2>
