@@ -73,3 +73,24 @@
     }
     showPage(1);
   </script>
+<div id="rates" style="background: #000; border: 2px solid yellow; color: lime; font-family: monospace; padding: 8px; margin-bottom: 15px; text-align: center; font-size: 14px;">
+    📈 ПОДКЛЮЧЕНИЕ К БИРЖЕ...
+  </div>
+  <script>
+    async function updateRates() {
+      try {
+        const res = await fetch('https://coingecko.com');
+        const data = await res.json();
+        const usdtRub = data.tether.rub;
+        const usdtUsd = data.tether.usd;
+        const zigInUsdt = (usdtUsd * 13.56 + (Math.random() - 0.5) * 0.05).toFixed(3);
+        const arrow = Math.random() > 0.5 ? '▲' : '▼';
+        document.getElementById('rates').innerHTML = 
+          `💵 <b>TETHER (USDT):</b> ${usdtRub} ₽ ($${usdtUsd}) | 💰 <b>ЗИМБАБВИЙСКОЕ ЗОЛОТО (ZiG):</b> ${zigInUsdt} USDT ${arrow}`;
+      } catch (e) {
+        document.getElementById('rates').innerHTML = `💰 <b>1 ZIG = 13.56 USDT</b> (СВЯЗЬ С БИРЖЕЙ ПРЕРВАНА)`;
+      }
+    }
+    updateRates();
+    setInterval(updateRates, 15000);
+  </script>
